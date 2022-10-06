@@ -27,10 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +40,14 @@ INSTALLED_APPS = [
     'datascrap',
     'mail',
 ]
+
+CRONJOBS = [
+    # ('* * * * *', 'datascrap.views.proxy_setup'),
+    ('* * * * *', 'datascarp.views.datascrap'),
+    ('* * * * *', 'mail.views.arbitrage'),
+]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,7 +86,7 @@ WSGI_APPLICATION = 'placebet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
