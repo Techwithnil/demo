@@ -112,3 +112,6 @@ def arbitrage():
 comeonbet()
 arbitrage()
 # cursor.close()
+while True:
+    comeonbet()
+    arbitrage()
